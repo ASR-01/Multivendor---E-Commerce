@@ -15,7 +15,7 @@ import {
 // Users layout Route
 const userRoute = Router();
 
-userRoute.post("", validateSchema(createUserSchema), createUser);
+userRoute.post("", createUser);
 userRoute.get("", getUsers);
 userRoute.get("/:userid", getUser);
 userRoute.delete("/:userid", deleteUser);

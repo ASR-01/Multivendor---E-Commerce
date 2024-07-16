@@ -17,6 +17,7 @@ export async function createUser(req: Request, res: Response) {
     res.status(500).json({
       status: false,
       message: "server error",
+      error
     });
   }
 }

@@ -8,7 +8,7 @@ const app = Express();
 app.use(Express.json());
 
 
-app.use("/api", userRoute);
+app.use("/api/v1/", userRoute);
 
 app.get("*", (req: Request, res: Response) =>
   res.send("I  Richest man in the World!")
