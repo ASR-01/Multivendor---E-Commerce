@@ -1,23 +1,21 @@
-import Express, { Request, Response } from "express";
-import dotenv from "dotenv";
-import userRoute from "./routes/index.routes";
-dotenv.config();
-
-const app = Express();
-
-app.use(Express.json());
-
-
-app.use("/api/v1/", userRoute);
-
-app.get("*", (req: Request, res: Response) =>
-  res.send("I  Richest man in the World!")
-);
+import express, { Express, Request, Response } from "express";
+import { PORT } from "./secrets";
+import RouteRouter from "./routes";
+import { globalErrorMiddleWare } from "./middlewares/error.middlewares";
 
 
 
-const port = process.env.PORT || 3000;
+const app: Express = express();
+app.use(express.json())
 
-app.listen(port, () => {
-  console.log(`server is running on ${port}`);
+
+
+app.use("/api/v1/",RouteRouter)
+
+
+
+app.use(globalErrorMiddleWare)
+
+app.listen(PORT, () => {
+  console.log(`Server is Listening on PORT ${PORT}`);
 });
