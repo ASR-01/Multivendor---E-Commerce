@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const redis_utils_1 = require("../utils/redis.utils");
+const jwt_middlewares_1 = require("../middlewares/jwt.middlewares");
+const category_controller_1 = require("../controllers/category.controller");
+const categoryRouter = (0, express_1.Router)();
+categoryRouter.post("/category", jwt_middlewares_1.AuthorizedUser, category_controller_1.CreateCategory);
+categoryRouter.delete("/category/:categoryId", jwt_middlewares_1.AuthorizedUser, category_controller_1.DeleteCategory);
+categoryRouter.patch("/category/:categoryId", jwt_middlewares_1.AuthorizedUser, category_controller_1.UpdateCategory);
+categoryRouter.get("/category", (0, redis_utils_1.redisCachedMiddleWare)("category"), jwt_middlewares_1.AuthorizedUser, category_controller_1.GetAllCategory);
+categoryRouter.get("/:category", (0, redis_utils_1.redisCachedMiddleWare)("category"), jwt_middlewares_1.AuthorizedUser, category_controller_1.GetSingleCategory);
+exports.default = categoryRouter;
