@@ -11,19 +11,27 @@ export const CreateProduct = async (req: Request, res: Response) => {
         ...req.body,
         storeId,
       },
+      include: {
+        photos: true,
+      },
     });
 
-    if (product) {
-      return res.json({
-        success: true,
-        msg: "Product create Successfully",
-        product,
+    if (req.file) {
+      const { originalname: filename, path: filepath } = req.file;
+
+      const photo = await prisma.photo.create({
+        data: {
+          filename,
+          filepath,
+          productId: product.id,
+        },
       });
-    } else {
-      return res.json({ success: true, msg: "Failed to create product" });
     }
+    
+    res.json({ success: true, msg: "Product created successfully", product });
   } catch (error) {
-    res.json({ success: false, msg: "Bad Request" });
+    console.log(error);
+    res.json({ success: false, msg: "Bad Request", error });
   }
 };
 
@@ -67,6 +75,7 @@ export const GetAllProduct = async (req: Request, res: Response) => {
       include: {
         categories: true,
         store: true,
+        photos:true
       },
     });
     setWithExpiry("products", product, 30);
@@ -87,6 +96,11 @@ export const GetSingleProduct = async (req: Request, res: Response) => {
 
     const product = await prisma.product.findFirst({
       where: { id: productId },
+      include:{
+        categories: true,
+        store: true,
+        photos:true
+      }
     });
 
     setWithExpiry("products", product as {}, 30);

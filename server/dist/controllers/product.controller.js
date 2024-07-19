@@ -20,20 +20,25 @@ const CreateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const { storeId } = req.body;
         const product = yield client_1.default.product.create({
             data: Object.assign(Object.assign({}, req.body), { storeId }),
+            include: {
+                photos: true,
+            },
         });
-        if (product) {
-            return res.json({
-                success: true,
-                msg: "Product create Successfully",
-                product,
+        if (req.file) {
+            const { originalname: filename, path: filepath } = req.file;
+            const photo = yield client_1.default.photo.create({
+                data: {
+                    filename,
+                    filepath,
+                    productId: product.id,
+                },
             });
         }
-        else {
-            return res.json({ success: true, msg: "Failed to create product" });
-        }
+        res.json({ success: true, msg: "Product created successfully", product });
     }
     catch (error) {
-        res.json({ success: false, msg: "Bad Request" });
+        console.log(error);
+        res.json({ success: false, msg: "Bad Request", error });
     }
 });
 exports.CreateProduct = CreateProduct;
@@ -76,6 +81,7 @@ const GetAllProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             include: {
                 categories: true,
                 store: true,
+                photos: true
             },
         });
         (0, redis_utils_1.setWithExpiry)("products", product, 30);
@@ -96,6 +102,11 @@ const GetSingleProduct = (req, res) => __awaiter(void 0, void 0, void 0, functio
         const { productId } = req.params;
         const product = yield client_1.default.product.findFirst({
             where: { id: productId },
+            include: {
+                categories: true,
+                store: true,
+                photos: true
+            }
         });
         (0, redis_utils_1.setWithExpiry)("products", product, 30);
         res.json({

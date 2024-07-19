@@ -5,12 +5,14 @@ import productRouter from "./routes/product.routes";
 import categoryRouter from "./routes/category.routes";
 import AddressRouter from "./routes/address.routes";
 import StoreRouter from "./routes/store.routes";
+import path from "path";
 
 dotenv.config();
 
 const app: Express = express();
 
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 
 app.use("/api/v1", UserRouter);
 app.use("/api/v1", StoreRouter);
