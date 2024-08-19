@@ -37,7 +37,7 @@
     margin-bottom: 0.5rem;
   }
   
-  .EmailInput,
+  .EmailInputLogin,
   .PasswordInput {
     width: 92%;
     padding: 0.75rem;
@@ -60,11 +60,11 @@
     cursor: pointer;
   }
   
-  .EmailInput:hover,
+  .EmailInputLogin:hover,
   .PasswordInput:hover {
     border-color: #aaa;
   }
-  .EmailInput:focus,.PasswordInput:focus {
+  .EmailInputLogin:focus,.PasswordInput:focus {
     outline: none;
   }
   
@@ -80,7 +80,7 @@
     text-decoration: underline;
   }
   
-  .SubmitButton {
+  .SubmitButtonLogin {
     width: 100%;
     padding: 0.75rem;
     background: linear-gradient(135deg, #000000, #434343);
@@ -91,7 +91,7 @@
     transition: background 0.3s;
   }
   
-  .SubmitButton:hover {
+  .SubmitButtonLogin:hover {
     background: linear-gradient(135deg, #434343, #000000);
   }
   
@@ -137,4 +137,18 @@
   
   .SigninMsg{
     padding-left: 0.2rem;
+  }
+
+  .BackHome{
+    position:absolute;
+    top:5%;
+    left:5%;
+    color: #ddd;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .BackHome:hover{
+    color: #aaa;
+    transform: scale(1.1);
   }

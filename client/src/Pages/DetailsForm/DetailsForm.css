@@ -168,8 +168,53 @@
     flex-direction: column;
     justify-content: center;
     align-items: left;
-
   }
+  .form1-input{
+    transition: all 0.3s;
+    padding-top: 2em;
+  }
+  .form-optionpage1{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .form1-input {
+    width: 80%;
+    padding: 10px 0;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Remove highlight on focus */
+  .form1-input:focus {
+    border-bottom: 2px solid #333; /* Optionally change the border color on focus */
+  }
+  
+  .form1-input:focus::-webkit-input-placeholder {
+    color: transparent; /* Optionally hide placeholder text on focus */
+  }
+  
+  .form1-input:focus:-moz-placeholder {
+    color: transparent; /* Optionally hide placeholder text on focus */
+  }
+  
+  .form1-input:focus::-moz-placeholder {
+    color: transparent; /* Optionally hide placeholder text on focus */
+  }
+  
+  .form1-input:focus:-ms-input-placeholder {
+    color: transparent; /* Optionally hide placeholder text on focus */
+  }
+  
   
   
 

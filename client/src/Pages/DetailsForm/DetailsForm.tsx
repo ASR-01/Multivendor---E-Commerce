@@ -3,43 +3,38 @@ import React,{useState} from 'react'
 import './DetailsForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 export default function DetailsForm() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [Username, setUsername] = useState('');
+  const [Phone, setPhone] = useState('');
+  const [Address, setAddress] = useState('');
   const [page, setPage] = useState(0);
-  const [selectedOption, setSelectedOption] = useState('');
   const [question, setQuestion] = useState(['active formElement', 'formElement', 'formElement']);
   const [progress] = useState(['progress pro25', 'progress pro50', 'progress pro75']);
-  const [activeRadio,setActiveRadio] = useState(['form1-option','form1-option']);
-  const [activeRadio2,setActiveRadio2] = useState(['form1-option','form1-option','form1-option','form1-option','form1-option','form1-option']);
   const [activeRadio3,setActiveRadio3] = useState(['form1-option','form1-option','form1-option','form1-option','form1-option','form1-option']);
-  const handleSubmit = () => {
-    console.log("submitted");
-  }
-  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const temp = [...activeRadio];
-    if(event.target.value === '1'){
-      temp[0] = 'form1-option activeradio';
-      temp[1] = 'form1-option';
+  const [sample] = useState(['form1-option','form1-option','form1-option','form1-option','form1-option','form1-option']);
+  const [available] = useState(['Ecommerce','Food','Beauty','Housing','Services','DecideLater']);
+  const [store,setStore] = useState('');
+  const handleSubmit = async() => {
+    const userData={
+      email,
+      password,
+      Username,
+      Phone,
+      Address,
+      store
     }
-    else{
-      temp[0] = 'form1-option';
-      temp[1] = 'form1-option activeradio';
-    }
-    setActiveRadio(temp);
-    setSelectedOption(event.target.value);
-  };
-  const handleOptionChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const temp = [...activeRadio2];
-    if(temp[parseInt(event.target.value)-1] === 'form1-option activeradio'){
-      temp[parseInt(event.target.value)-1] = 'form1-option';
-    }
-    else{
-      temp[parseInt(event.target.value)-1] = 'form1-option activeradio';
-    }
-    setActiveRadio2(temp);
+    console.log(userData);
+    //Write Signup logic here
+    navigate('/login');
   }
   const handleOptionChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const temp = [...activeRadio3];
-    if(temp[parseInt(event.target.value)-1] === 'form1-option activeradio'){
+    const temp = [...sample];
+    setStore(available[parseInt(event.target.value)-1]);
+    if(activeRadio3[parseInt(event.target.value)-1] === 'form1-option activeradio'){
       temp[parseInt(event.target.value)-1] = 'form1-option';
     }
     else{
@@ -71,7 +66,27 @@ export default function DetailsForm() {
       </div>
       <div className='formstart'>
       <form>
-          <div className={question[0]}>
+        <div className={question[0]}>
+        <div className='formhead'>Let’s get started.</div>
+        <div className='formsubhead'>Enter Email and Password to Signup</div>
+        <div className='form-optionpage1'>
+          <input
+            className='form1-input'
+            type="email"
+            placeholder='Enter your email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className='form1-input'
+            type="password"
+            placeholder='Enter your password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      </div>
+          {/* <div className={question[0]}>
             <div className='formhead'>Let’s get started. Which of these best describes you?</div>
             <div className='formsubhead'>We’ll help you get set up based on your business needs.</div>
             <div className='form-options'>
@@ -98,93 +113,32 @@ export default function DetailsForm() {
                 <span className='form1-text' >I’m already selling online or in person</span>
             </label>
           </div>
-          </div>
+          </div> */}
           <div className={question[1]}>
-            <div className='formhead'>Where would you like to sell?</div>
-            <div className='formsubhead'>Pick as many as you like – you can always change these later. We'll make sure you're set up to sell in these places.</div>
-            <div className='form-options'>
-            <label className={activeRadio2[0]} >
-              <input
-                className='form1-radio'
-                type="checkbox"
-                name="business-type"
-                value='1'
-                checked={activeRadio2[0] === 'form1-option activeradio'}
-                onChange={handleOptionChange2}
+            <div className='formhead'>One Step Closer</div>
+            <div className='formsubhead'>Please Provide Some More Details to Complete the Setup</div>
+            <div className='form-optionpage1'>
+                <input
+                className='form1-input'
+                type="text"
+                placeholder='Enter your Username'
+                value={Username}
+                onChange={(e) => setUsername(e.target.value)}
               />
-              <div className='form1-text'>
-                <span style={{fontSize:"1.4vw"}}>An online store</span>
-                <span style={{fontSize:"0.8vw"}}>Create a fully customizable website</span>
-              </div>
-            </label>
-            <label className={activeRadio2[1]}>
               <input
-                className='form1-radio'
-                type="checkbox"
-                name="business-type"
-                value='2'
-                checked={activeRadio2[1] === 'form1-option activeradio'}
-                onChange={handleOptionChange2}
+                className='form1-input'
+                type="text"
+                placeholder='Enter your Phone Number'
+                value={Phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
-                <div className='form1-text'>
-                  <span style={{fontSize:"1.4vw"}} >In person</span>
-                  <span style={{fontSize:"0.8vw"}}>Sell at retail stores, pop-ups, or other physical locations</span>
-                </div>
-            </label>
-            <label className={activeRadio2[2]}>
               <input
-                className='form1-radio'
-                type="checkbox"
-                name="business-type"
-                value='3'
-                checked={activeRadio2[2] === 'form1-option activeradio'}
-                onChange={handleOptionChange2}
+                className='form1-input'
+                type="text"
+                placeholder='Enter your Address'
+                value={Address}
+                onChange={(e) => setAddress(e.target.value)}
               />
-                <div className='form1-text'>
-                  <span  style={{fontSize:"1.4vw"}}>An existing website or blog</span>
-                  <span style={{fontSize:"0.8vw"}}>Add a Buy Button to your website</span>
-                </div>
-            </label>
-            <label className={activeRadio2[3]}>
-              <input
-                className='form1-radio'
-                type="checkbox"
-                name="business-type"
-                value='4'
-                checked={activeRadio2[3] === 'form1-option activeradio'}
-                onChange={handleOptionChange2}
-              />
-                <div className='form1-text' >
-                  <span  style={{fontSize:"1.4vw"}}>Social media</span>
-                  <span style={{fontSize:"0.8vw"}}>Reach customers on Facebook, Instagram, TikTok, and more</span>
-                </div>
-                
-            </label>
-            <label className={activeRadio2[4]}>
-              <input
-                className='form1-radio'
-                type="checkbox"
-                name="business-type"
-                value='5'
-                checked={activeRadio2[4] === 'form1-option activeradio'}
-                onChange={handleOptionChange2}
-              />
-                <div className='form1-text'>
-                  <span style={{fontSize:"1.4vw"}}>Online marketplaces</span>
-                  <span style={{fontSize:"0.8vw"}}>List products on Etsy, Amazon, and more</span>
-                </div>
-            </label>
-            <label className={activeRadio2[5]}>
-              <input
-                className='form1-radio'
-                type="checkbox"
-                name="business-type"
-                value='6'
-                checked={activeRadio2[5] === 'form1-option activeradio'}
-                onChange={handleOptionChange2}
-              />
-                <span className='form1-text' style={{fontSize:"1vw"}}>I'm not sure</span>
-            </label>
           </div>
           </div>
           <div className={question[2]}>

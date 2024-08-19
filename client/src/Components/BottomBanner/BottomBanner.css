@@ -61,8 +61,8 @@
     position: relative;
 }
 
-.EmailInput {
-    width: 60%;
+.EmailInputBottom {
+    width: 100%;
     padding: 0.8em;
     border: none;
     border-radius: 30px;
@@ -72,10 +72,10 @@
     padding-left: 3em;
 }
 
-.EmailInput::placeholder {
+.EmailInputBottom::placeholder {
     color: #b0b0b0;
 }
-.EmailInput:focus {
+.EmailInputBottom:focus {
     outline: none;
 }
 

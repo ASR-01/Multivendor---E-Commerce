@@ -12,7 +12,7 @@ export default function BottomBanner() {
             </div>
             <div className='BannerInput'>
                  <div className="BannerInputContainer">
-                    <input type="email" className="EmailInput" placeholder="Enter your email" />
+                    <input type="email" className="EmailInputBottom" placeholder="Enter your email" />
                     <button className="SubmitButton">Submit</button>
                 </div>
             </div>

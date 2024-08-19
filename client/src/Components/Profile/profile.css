@@ -1,0 +1,136 @@
+.Profile_container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  width: 100%;
+}
+.Profile_container_01 {
+  border: 1px solid red;
+  padding: 2rem;
+  width: 100%;
+}
+.Profile_container_02 {
+  border: 1px solid blue;
+}
+.Profile_container_01_items {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.Avatar {
+  width: 9vw;
+  height: auto;
+}
+.Profile_items_01_02 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 3rem;
+}
+.profile_headings {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+.profile_btn {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.profile_btn button {
+  padding: 1rem 2.6rem;
+  border-radius: 2px;
+  background: linear-gradient(to right, rgb(0, 179, 255), rgb(0, 30, 255));
+  border: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-size: 1.2rem;
+
+  transition: 1s;
+  z-index: 0;
+  position: relative;
+}
+
+button:hover {
+  color: black;
+}
+
+.Profile_container_02 {
+  padding: 2rem;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Profile_container_02 h3 {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+form {
+  width: 60%;
+}
+
+.form_group {
+  margin-bottom: 1.5rem;
+}
+
+.form_group label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form_group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  padding: 1rem 2.6rem;
+  border-radius: 5px;
+  background: linear-gradient(to right, rgb(0, 179, 255), rgb(0, 30, 255));
+  border: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.5s, color 0.5s;
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before {
+  content: "";
+  background: linear-gradient(to right, rgb(214, 172, 22), rgb(235, 228, 16));
+  position: absolute;
+  width: 20px;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  transition: width 1.5s;
+}
+
+button[type="submit"]:hover::before {
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  color: black;
+}
