@@ -1,27 +1,29 @@
-import { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// Lazy load components
-const Home = lazy(() => import("./components/Home/Home"));
-const About = lazy(() => import("./components/about/About"));
-const Register = lazy(() => import("./components/Auth/Register"));
-const Login = lazy(() => import("./components/Auth/Login"));
-const ForgetPassword = lazy(() => import("./components/Auth/ForgetPassword"));
-
-const App = () => {
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
+import DetailsForm from './Pages/DetailsForm/DetailsForm';
+import Cart from './Pages/Cart/Cart';
+import Profile from './Components/Profile/Profile';
+import { UserProvider } from './context/UserContext';
+function App() {
   return (
+    <UserProvider>
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgotPassword" element={<ForgetPassword />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/details" element={<DetailsForm />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
     </Router>
+    </UserProvider>
   );
-};
+}
 
 export default App;
+

@@ -1,0 +1,131 @@
+.Cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    background: linear-gradient(135deg, #000000, #434343);
+}
+.Cartline{
+    width: 100%;
+    height: 1px;
+    background-color: #aaa ;
+    margin-bottom: 2%;
+}
+
+.amount{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+.CartItems{
+    margin-top: 4%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 80%;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 2%;
+    padding-bottom: 4%;
+    overflow: hidden;
+    margin-bottom: 4%;
+}
+.CartTitle{
+    color: #434343;
+    font-size: 6vw;
+    margin-bottom: 1rem;
+}
+
+.CartItemsHeader,
+.CartItem {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    color: #434343;
+}
+.CartItem{
+    border: 1px solid #aaa;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.CartItemsHeader {
+    font-weight: bold;
+    color: #434343;
+    font-size:x-large;
+}
+
+.CartItemsHeaderTitle {
+    flex: 1;
+    text-align: center;
+}
+
+.CartItemTitle,
+.CartItemPrice,
+.CartItemQuantity,
+.CartItemTotal {
+    flex: 1;
+    text-align: center;
+}
+.CartItemTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.CartItemQuantity button {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.CartItemQuantity button:hover {
+    background-color: #434343;
+}
+
+.CartTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    color:#434343;
+    font-size: 1.5vw;
+}
+
+.CartTotalTitle {
+    font-weight: bold;
+}
+
+.CartTotalAmount {
+    font-size: 1.2em;
+}
+.checkOut{
+    align-self: flex-end;
+    margin-right: 5%;
+    margin-top: 2%;
+    padding: 1%;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    background: linear-gradient(271deg, #e25197 0%, #774dc1 100%);
+    color:white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.checkOut:hover{
+    box-shadow: 0px 0px 5px 0px #000000;
+}
